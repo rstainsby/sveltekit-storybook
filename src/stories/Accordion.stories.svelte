@@ -63,3 +63,4 @@
   <Story name="Default" />
   <Story name="Disabled" args={{ disabled: true }} />
   <Story name="Left-aligned" args={{ align: "start" }} />
+  <Story name="Skeleton" args={{ skeleton: true }} />
