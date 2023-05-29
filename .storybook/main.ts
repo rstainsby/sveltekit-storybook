@@ -9,17 +9,8 @@ const config: StorybookConfig = {
 	],
 	framework: {
 		name: '@storybook/sveltekit',
-		options: {},
+		options: {}
 	},
-	core: {
-		builder: {
-			name: '@storybook/builder-webpack5',
-			options: {
-			  fsCache: true,
-			  lazyCompilation: true,
-			},
-		  },
-	}
 	docs: {
 		autodocs: true
 	}
