@@ -6,11 +6,11 @@
 </script>
 
 <Meta
-	title="Button"
+	title="Carbon Design/Button"
 	component={Button}
 	argTypes={{
 		kind: {
-			control: { type: 'select' },
+			control: 'select',
 			options: [
 				'primary',
 				'secondary',
@@ -21,83 +21,141 @@
 				'danger-ghost'
 			],
 			description: 'Specify the kind of button',
-      		defaultValue: 'primary'
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: 'primary' }
+			}
 		},
 		size: {
-			control: { type: 'select' },
+			control: 'select',
 			options: ['default', 'field', 'small', 'lg', 'xl'],
 			description: 'Specify the size of the button',
-     		defaultValue: 'default'
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: 'default' }
+			}
 		},
 		expressive: {
 			control: 'boolean',
-			description: "Set to true to use Carbon's expressive typesetting"
+			description: "Set to true to use Carbon's expressive typesetting",
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: false }
+			}
 		},
 		isSelected: {
 			control: 'boolean',
 			if: { arg: 'kind', eq: 'ghost' },
-			description: 'Set to true to enable the selected state for an icon-only, ghost button'
+			description: 'Set to true to enable the selected state for an iconOnly, ghost button',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: false }
+			}
 		},
 		icon: {
 			control: 'text',
-			description: 'Specify the icon to render, this should be a Svelte component'
+			description: 'Specify the icon to render, this should be a Svelte component',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		iconDescription: {
 			control: 'text',
 			description:
-				'Specify the ARIA label for the button icon. This will also be used for the tooltip'
+				'Specify the ARIA label for the button icon. This will also be used for the tooltip',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		tooltipAlignment: {
-			control: { type: 'select' },
+			control: 'select',
 			options: ['start', 'center', 'end'],
 			description:
-				'Set the alignment of the tooltip relative to the icon. Only applies to icon-only buttons'
+				'Set the alignment of the tooltip relative to the icon. Only applies to iconOnly buttons',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: 'start' }
+			}
 		},
 		tooltipPosition: {
-			control: { type: 'select' },
+			control: 'select',
 			options: ['top', 'right', 'bottom', 'left'],
-			description: 'Set the position of the tooltip relative to the icon'
+			description: 'Set the position of the tooltip relative to the icon',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: 'bottom' }
+			}
 		},
 		as: {
 			control: 'boolean',
 			description:
-				'Set to true to render a custom HTML element. Props are destructured as props in the default slot'
+				'Set to true to render a custom HTML element. Props are destructured as props in the default slot',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		skeleton: {
 			control: 'boolean',
-			description: "Set to true to display the skeleton state."
+			description: 'Set to true to display the skeleton state.',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: false }
+			}
 		},
 		disabled: {
 			control: 'boolean',
-			description: 'Set to true to disable the button'
+			description: 'Set to true to disable the button',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: false }
+			}
 		},
 		href: {
 			control: 'text',
-			description: "Set the href to use an anchor link"
+			description: 'Set the href to use an anchor link',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		tabindex: {
 			control: 'number',
-			description: 'Specify the tabindex'
+			description: 'Specify the tabindex',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		type: {
 			control: 'text',
-			description: 'Specify the type attribute for the button element'
+			description: 'Specify the type attribute for the button element',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		},
 		ref: {
 			control: null,
-			description: 'A reference to the component itself'
+			description: 'A reference to the component itself',
+			table: {
+				type: { summary: null },
+				defaultValue: { summary: null }
+			}
 		}
 	}}
 />
 
-<Template let:args>
-	{#if args.textContent && args.textContent.length > 0}
-		<Button {...args} icon={args.icon ? Add : undefined}>
-			{args.textContent}
-		</Button>
-	{:else}
-		<Button {...args} icon={args.icon ? Add : undefined} />
-	{/if}
+<Template id="withText" let:args>
+	<Button {...args} icon={args.icon ? Add : undefined}>
+		{args.textContent}
+	</Button>
+</Template>
+
+<Template id="iconOnly" let:args>
+	<Button {...args} icon={args.icon ? Add : undefined} />
 </Template>
 
 <Story let:args name="Default">
@@ -111,8 +169,9 @@
 		controls: {
 			include: ['kind', 'size', 'disabled', 'expressive', 'icon']
 		}
-	}}>
-	<Button href='#' {...args}>Hi, I'm an anchor</Button>
+	}}
+>
+	<Button href="#" {...args}>Hi, I'm an anchor</Button>
 </Story>
 
 <Story
@@ -128,6 +187,7 @@
 </Story>
 
 <Story
+	template="iconOnly"
 	name="Icon Only"
 	args={{
 		icon: true,
@@ -151,9 +211,10 @@
 	}}
 />
 
-<Story 
-	name="Skeleton" 
-	args={{ skeleton: true }} 
+<Story
+	template="withText"
+	name="Skeleton"
+	args={{ skeleton: true }}
 	parameters={{
 		controls: {
 			include: ['size', 'skeleton']
