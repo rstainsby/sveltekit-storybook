@@ -44,6 +44,7 @@
     "@sveltejs/package": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
+    "carbon-components-svelte": "^0.75.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.12",
@@ -63,5 +64,8 @@
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@storybook/addon-svelte-csf": "^3.0.2"
+  }
 }

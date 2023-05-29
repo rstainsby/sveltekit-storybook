@@ -10,3 +10,8 @@
 		<div>%sveltekit.body%</div>
 	</body>
 </html>
+
+<script>
+	// this won't allow CSS tree-shaking from SvelteKit
+	import "carbon-components-svelte/css/all.css";
+</script>
