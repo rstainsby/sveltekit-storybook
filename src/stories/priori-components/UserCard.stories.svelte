@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Meta, Story, Template } from "@storybook/addon-svelte-csf";
     import UserCard from "$lib/components/UserCard.svelte";
-    import johnDoeProfilePicture from './images/john-doe--profile-picture.png';
-    import janeDoeProfilePicture from './images/jane-doe--profile-picture.png';
+    import johnDoeProfilePicture from '../images/john-doe--profile-picture.png';
+    import janeDoeProfilePicture from '../images/jane-doe--profile-picture.png';
     import 'carbon-components-svelte/css/all.css';
 	import { Button } from "carbon-components-svelte";
 </script>
