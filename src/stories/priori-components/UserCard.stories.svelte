@@ -59,7 +59,7 @@
   </Story>
 
   <Story name="Inside Ghost Button (will wrap long names)" args={{ name: 'Jane Doe', role: 'Designer', skeleton: false }} let:args>
-      <Button kind="ghost" class="container">
+      <Button kind="ghost">
           <UserCard {...args}>
               <img slot="profilePicture" src="{janeDoeProfilePicture}" alt="{args.name}'s profile picture">
           </UserCard>

@@ -52,6 +52,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        max-width: 100%;
     }
 
     .user-card__profile-picture {
@@ -74,8 +75,13 @@
         min-width: 10rem;
     }
 
+    .user-card__name {
+        word-wrap: break-word;
+    }
+
     .user-card__role {
         font-size: 0.9rem;
         font-weight: 300;
+        word-wrap: break-word;
     }
 </style>
