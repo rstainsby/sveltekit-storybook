@@ -5,14 +5,26 @@
 	import { onDestroy, onMount } from 'svelte';
 
 	export let chartId: string;
-    export let initialData: {
+    export let data: {
         date: number,
         value: number
     }[];
-	export const addDataPoint = (dataPoint: {
-        date: number,
-        value: number
-    }) => addData(dataPoint.date, dataPoint.value);
+
+	export let newDataPoint: {
+		date: number,
+		value: number
+	};
+
+	$: if (newDataPoint) {
+		data.push(newDataPoint);
+		
+		addData(newDataPoint.date, newDataPoint.value);
+	}
+
+	// export const addDataPoint = (dataPoint: {
+    //     date: number,
+    //     value: number
+    // }) => addData(dataPoint.date, dataPoint.value);
 
 	/* Chart code */
 	// Create root element
@@ -150,8 +162,8 @@
 
         // tell that the last data item must create bullet
         // @ts-ignore
-		initialData[initialData.length - 1].bullet = true;
-		series.data.setAll(initialData);
+		data[data.length - 1].bullet = true;
+		series.data.setAll(data);
 	});
 
 	onDestroy(() => {
